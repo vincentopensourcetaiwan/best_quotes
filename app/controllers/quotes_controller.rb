@@ -9,7 +9,7 @@ class QuotesController < Rulers::Controller
   end
 
   def index
-    quotes = Rulers::Model::FileModel.all
+    quotes = FileModel.all
     render :index, :quotes => quotes
   end
 
@@ -19,7 +19,7 @@ class QuotesController < Rulers::Controller
       "quote" => "A picture is worth one k pixels",
       "attribution" => "Me"
     }
-    m = Rulers::Model::FileModel.create attrs
+    m = FileModel.create attrs
     render :quote, :obj => m
   end
 end

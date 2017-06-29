@@ -7,4 +7,19 @@ class QuotesController < Rulers::Controller
     quote_1 = Rulers::Model::FileModel.find(1)
     render :quote, :obj => quote_1
   end
+
+  def index
+    quotes = Rulers::Model::FileModel.all
+    render :index, :quotes => quotes
+  end
+
+  def new_quote
+    attrs = {
+      "submitter" => "web user",
+      "quote" => "A picture is worth one k pixels",
+      "attribution" => "Me"
+    }
+    m = Rulers::Model::FileModel.create attrs
+    render :quote, :obj => m
+  end
 end
